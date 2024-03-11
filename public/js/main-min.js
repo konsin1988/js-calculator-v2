@@ -1,0 +1,1 @@
+const switcherTheme=document.querySelectorAll(".switcher-svg"),bottom=document.querySelector(".bottom"),main=document.querySelector("main");function addSunTheme(){main.className="main light-theme"}function addMoonTheme(){main.className="main dark-theme"}switcherTheme[0].addEventListener("click",addSunTheme),switcherTheme[1].addEventListener("click",addMoonTheme);
