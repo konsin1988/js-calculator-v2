@@ -27,7 +27,9 @@ section.top {
   height: 41%;
   border-radius: 30px;
 }
-
+section.top i {
+  font-size: 0.8em;
+}
 .top .switch-box {
   position: absolute;
   top: 10%;
@@ -60,20 +62,30 @@ section.top {
   border-radius: 20px;
   z-index: 2;
 }
-.top .input {
+.top .allinput,
+.top .result {
   position: absolute;
-  bottom: 10%;
   left: 10%;
-  width: 75%;
+  min-width: 75%;
   font-size: 1.5em;
   font-weight: 600;
   display: flex;
+  align-items: center;
+}
+.top .allinput {
+  justify-content: flex-end;
+  bottom: 21%;
+  opacity: 0.6;
+  flex-wrap: wrap;
+  max-height: 55%;
+  text-wrap: wrap;
+  max-width: 80%;
+  overflow-y: hidden;
+}
+.top .result {
+  bottom: 10%;
   justify-content: space-between;
 }
-.top .input span:not(:nth-child(3)) {
-  opacity: 0.5;
-}
-
 section.bottom {
   position: relative;
   height: 59%;
@@ -99,6 +111,11 @@ section.bottom {
   padding: 1%;
   z-index: 5;
 }
+.item .button-action {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
 
 .bottom > div:nth-child(1) {
   font-size: 0.9em;
@@ -106,22 +123,23 @@ section.bottom {
 
 .bottom .landscape {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 355%;
+  top: 8.3%;
+  left: 10%;
+  height: 13.5%;
+  width: 58.5%;
   border-radius: 30px;
 }
 .bottom .portrait {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 590%;
-  width: 100%;
+  top: 8.3%;
+  left: 73.5%;
+  height: 63.6%;
+  width: 16.5%;
   border-radius: 30px;
 }
 .bottom .actions svg {
   width: 1.3vw;
+  z-index: 3;
 }
 
 .bottom .bottom-line {
@@ -249,7 +267,8 @@ section.bottom {
   .top .sun-moon svg {
     width: 1vw;
   }
-  .top .input {
+  .top .result,
+  .top .allinput {
     font-size: 1.5em;
   }
   .item {
@@ -270,7 +289,8 @@ section.bottom {
   .top .sun-moon svg {
     width: 1.5vw;
   }
-  .top .input {
+  .top .result,
+  .top .allinput {
     font-size: 2em;
   }
   .item {
@@ -281,6 +301,9 @@ section.bottom {
   .bottom .actions svg {
     width: 2vw;
   }
+  .bottom > div:first-child {
+    font-size: 1.3em;
+  }
 }
 @media screen and (orientation: portrait) and (min-width: 500px) {
   .main {
@@ -290,7 +313,8 @@ section.bottom {
   .top .sun-moon svg {
     width: 1.5vh;
   }
-  .top .input {
+  .top .result,
+  .top .allinput {
     font-size: 2em;
   }
   .item {
@@ -300,6 +324,9 @@ section.bottom {
   }
   .bottom .actions svg {
     width: 2vh;
+  }
+  .bottom > div:first-child {
+    font-size: 1.3em;
   }
 }
 
@@ -316,19 +343,26 @@ section.bottom {
   .top .sun-moon svg {
     width: 2.2vh;
   }
-  .top .input {
-    font-size: 2.5em;
+  .top .result,
+  .top .allinput {
+    font-size: 2em;
+  }
+  .top .allinput {
+    bottom: 25%;
   }
   .item {
     height: 7.2vh;
     width: 7.2vh;
-    font-size: 1.8em;
+    font-size: 1.4em;
   }
   .bottom .actions svg {
-    width: 4.3vh;
+    width: 4.1vh;
   }
   .bottom > div:nth-child(1) {
     font-size: 1.5em;
+  }
+  .bottom > div:first-child {
+    font-size: 1.1em;
   }
 }
 @media screen and (orientation: landscape) and (max-height: 600px) {
@@ -353,7 +387,8 @@ section.bottom {
   .top .sun-moon svg {
     width: 2.2vh;
   }
-  .top .input {
+  .top .result,
+  .top .allinput {
     font-size: 1.8em;
   }
   .item {

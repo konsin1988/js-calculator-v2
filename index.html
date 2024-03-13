@@ -7,6 +7,15 @@
     <title>Calculator</title>
     <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
     <link rel="stylesheet" href="./css/main.css" />
+    <link
+      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-6.5.1-web/css/all.min.css"
+    />
+
     <script src="./js/main.js" defer></script>
   </head>
   <body>
@@ -48,149 +57,61 @@
             />
           </svg>
         </div>
-        <div class="input">
-          <span class="equal">=</span>
-          <span class="num_prev">45</span>
-          <span class="num-current">456</span>
+        <div class="allinput">
+          <span class="num-all"></span>
+        </div>
+        <div class="result">
+          <span class="equal"
+            ><i class="fa fa-chevron-right" aria-hidden="true"></i
+          ></span>
+          <span class="result-span">0</span>
         </div>
       </section>
       <section class="bottom">
-        <div class="item actions" data-type="AC">
-          AC
-          <div class="landscape"></div>
+        <div class="landscape"></div>
+        <div class="portrait"></div>
+        <div class="item actions">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+          <div class="button-action" data-action="AC"></div>
         </div>
-        <div class="item actions" data-type="plus-minus">
-          <svg
-            id="Flat"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 256 256"
-          >
-            <path
-              d="M204.24268,60.24268l-144,144a6.00006,6.00006,0,0,1-8.48536-8.48536l144-144a6.00006,6.00006,0,0,1,8.48536,8.48536ZM66,112a6,6,0,0,0,12,0V78h34a6,6,0,0,0,0-12H78V32a6,6,0,0,0-12,0V66H32a6,6,0,0,0,0,12H66Zm158,66H144a6,6,0,0,0,0,12h80a6,6,0,0,0,0-12Z"
-            />
-          </svg>
+
+        <div class="item actions">
+          <i class="fa fa-percent" aria-hidden="true"></i>
+          <div class="button-action" data-action="percent"></div>
         </div>
-        <div class="item actions" data-type="remove-one">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M13.5,11.7928932 L16.1464466,9.14644661 C16.3417088,8.95118446 16.6582912,8.95118446 16.8535534,9.14644661 C17.0488155,9.34170876 17.0488155,9.65829124 16.8535534,9.85355339 L14.2071068,12.5 L16.8535534,15.1464466 C17.0488155,15.3417088 17.0488155,15.6582912 16.8535534,15.8535534 C16.6582912,16.0488155 16.3417088,16.0488155 16.1464466,15.8535534 L13.5,13.2071068 L10.8535534,15.8535534 C10.6582912,16.0488155 10.3417088,16.0488155 10.1464466,15.8535534 C9.95118446,15.6582912 9.95118446,15.3417088 10.1464466,15.1464466 L12.7928932,12.5 L10.1464466,9.85355339 C9.95118446,9.65829124 9.95118446,9.34170876 10.1464466,9.14644661 C10.3417088,8.95118446 10.6582912,8.95118446 10.8535534,9.14644661 L13.5,11.7928932 L13.5,11.7928932 Z M7.28441797,17.4602766 C7.56940871,17.8022655 7.99158013,18 8.43674989,18 L19.5,18 C20.3284271,18 21,17.3284271 21,16.5 L21,8.5 C21,7.67157288 20.3284271,7 19.5,7 L8.43674989,7 C7.99158013,7 7.56940871,7.19773451 7.28441797,7.5397234 L3.15085414,12.5 L7.28441797,17.4602766 Z M2.11588936,12.1799078 L6.51619669,6.899539 C6.99118126,6.32955752 7.69480029,6 8.43674989,6 L19.5,6 C20.8807119,6 22,7.11928813 22,8.5 L22,16.5 C22,17.8807119 20.8807119,19 19.5,19 L8.43674989,19 C7.69480029,19 6.99118126,18.6704425 6.51619669,18.100461 L2.11588936,12.8200922 C1.96137021,12.6346692 1.96137021,12.3653308 2.11588936,12.1799078 Z"
-            />
-          </svg>
+        <div class="item actions">
+          <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+          <div class="button-action" data-action="remove-one"></div>
         </div>
-        <div class="item actions" data-type="div">
-          <svg
-            class="icon icon-tabler icon-tabler-divide"
-            fill="#373737"
-            height="30"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="30"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M0 0h24v24H0z" fill="none" stroke="none" />
-            <circle cx="12" cy="6" fill="currentColor" r="1" />
-            <circle cx="12" cy="18" fill="currentColor" r="1" />
-            <line x1="5" x2="19" y1="12" y2="12" />
-          </svg>
-          <div class="portrait"></div>
+        <div class="item actions">
+          <i class="fa-solid fa-divide"></i>
+          <div class="button-action" data-type="div"></div>
         </div>
         <div class="item number">1</div>
         <div class="item number">2</div>
         <div class="item number">3</div>
-        <div class="item actions" data-type="mult">
-          <svg
-            fill="#373737"
-            stroke="#373737"
-            height="30"
-            viewBox="0 0 24 24"
-            width="30"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 12L6 6M12 12L18 18M12 12L18 6M12 12L6 18"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-          </svg>
+        <div class="item actions">
+          <i class="fa fa-times" aria-hidden="true"></i>
+          <div class="button-action" data-type="mult"></div>
         </div>
         <div class="item number">4</div>
         <div class="item number">5</div>
         <div class="item number">6</div>
-        <div class="item actions" data-type="sub">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="#373737"
-          >
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: #fff;
-                  opacity: 0;
-                }
-                .cls-2 {
-                  fill: #231f20;
-                }
-              </style>
-            </defs>
-            <title>minus</title>
-            <g id="Layer_2" data-name="Layer 2">
-              <g id="minus">
-                <g id="minus-2" data-name="minus">
-                  <rect
-                    class="cls-1"
-                    width="24"
-                    height="24"
-                    transform="translate(24 24) rotate(180)"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M19,13H5a1,1,0,0,1,0-2H19a1,1,0,0,1,0,2Z"
-                  />
-                </g>
-              </g>
-            </g>
-          </svg>
+        <div class="item actions">
+          <i class="fa fa-minus" aria-hidden="true"></i>
+          <div class="button-action" data-type="sub"></div>
         </div>
         <div class="item number">7</div>
         <div class="item number">8</div>
         <div class="item number">9</div>
-        <div class="item actions" data-type="add">
-          <svg
-            id="Layer_1"
-            style="enable-background: new 0 0 512 512"
-            version="1.1"
-            viewBox="0 0 512 512"
-            xml:space="preserve"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            fill="#373737"
-          >
-            <style type="text/css">
-              .st0 {
-                fill: #231f20;
-              }
-            </style>
-            <path
-              fill="currentColor"
-              d="M381,236H276V131c0-11-9-20-20-20s-20,9-20,20v105H131c-11,0-20,9-20,20s9,20,20,20h105v105c0,11,9,20,20,20  s20-9,20-20V276h105c11,0,20-9,20-20S392,236,381,236z"
-            />
-          </svg>
+        <div class="item actions">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <div class="button-action" data-type="add"></div>
         </div>
         <div class="item number">.</div>
         <div class="item number">0</div>
         <div class="item number">00</div>
-        <div class="item actions" id="equal" data-type="equal">
+        <div class="item actions" id="equal">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -203,6 +124,7 @@
           >
             <path fill="currentColor" d="M19,10H5V8H19V10M19,16H5V14H19V16Z" />
           </svg>
+          <div class="button-action" data-action="equal"></div>
         </div>
 
         <div class="bottom-line"></div>
