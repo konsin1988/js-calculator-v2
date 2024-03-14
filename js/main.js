@@ -17,11 +17,9 @@ function addMoonTheme() {
 }
 
 let result = "0";
-const numbers = [];
+let numbers = [];
 const operators = [];
-
 let current = "";
-let currentOperator = (op1, op2) => +op1 + +op2;
 
 items.forEach((item) =>
   item.addEventListener("click", (event) => {
@@ -33,7 +31,9 @@ function keyPressed(key) {
   if (key.classList.contains("number")) {
     numberPressed(key);
   } else if (key.dataset.type) {
-    currentOperator = getCurrentOperation(key.dataset.type);
+    if (numbers.length == []) {
+      return;
+    }
     operatorPressed(key.dataset.type);
   } else if (key.dataset.action) {
     actionPressed(key.dataset.action);
@@ -42,11 +42,13 @@ function keyPressed(key) {
 
 function numberPressed(item) {
   numbers.pop();
-
   let numValue = item.innerHTML;
   if (current.length > 12) {
     numbers.push(current);
     return;
+  }
+  if (numValue == ".") {
+    numValue = current == "" ? "0." : Number.isInteger(+current) ? "." : "";
   }
   current += numValue;
   numbers.push(current);
@@ -94,45 +96,61 @@ function actionPressed(action) {
       resetToZero();
       break;
     case "percent":
-      if (current == "") {
-        break;
-      }
-      numbers.pop();
-      allInput.innerHTML = allInput.innerHTML.slice(0, -current.length);
-      current = String(+current / 100);
-      numbers.push(current);
-      allInput.innerHTML += current;
-      updateResult();
+      getPercent();
       break;
     case "remove-one":
       removeLastSymbol();
       break;
     case "equal":
+      equalPressed();
       break;
   }
+}
+
+function getPercent() {
+  if (numbers.length == 0 || isLastNode()) {
+    return;
+  }
+  current = numbers.pop();
+  allInput.innerHTML = allInput.innerHTML.slice(0, -current.length);
+  current = String(+current / 100);
+  numbers.push(current);
+  allInput.innerHTML += current;
+  updateResult();
 }
 
 function addOperator(stringNode, type) {
   if (isLastNode() || isDot()) {
     removeLastSymbol();
   }
+  removeZeroes();
   operators.push(type);
   current = "";
   numbers.push(current);
+  updateResult();
   allInput.innerHTML += stringNode;
 }
 
+function removeZeroes() {
+  let temp = numbers.pop();
+  allInput.innerHTML = allInput.innerHTML.slice(0, -temp.length);
+  allInput.innerHTML += String(+temp);
+  numbers.push(String(+temp));
+}
+
 function removeLastSymbol() {
+  if (numbers.length == 0) {
+    return;
+  }
   if (isLastNode()) {
     allInput.lastChild.remove();
     operators.pop();
     current = numbers.pop();
   } else {
-    numbers.pop();
+    current = numbers.pop();
     allInput.innerHTML = allInput.innerHTML.slice(0, -1);
     current = current.slice(0, -1);
     numbers.push(current);
-    console.log(numbers, operators);
   }
   updateResult();
 }
@@ -144,24 +162,25 @@ function isDot() {
   return allInput.innerHTML[allInput.innerHTML.length - 1] === ".";
 }
 
-function isNumbersArrayEmpty() {
-  return numbers.length == 0;
-}
-
 function resetToZero() {
   allInput.innerHTML = "";
   resultDisplay.innerHTML = "0";
-  result = "0";
   current = "";
   numbers.length = 0;
   operators.length = 0;
 }
 
 function updateResult() {
-  resultDisplay.innerHTML = calculateResult(
-    numbers.slice(0).reverse(),
-    operators.slice(0).reverse()
-  );
+  resultDisplay.innerHTML =
+    numbers.length > 1
+      ? calculateResult(
+          numbers.slice(0).reverse(),
+          operators.slice(0).reverse()
+        )
+      : numbers[0] == ""
+      ? "0"
+      : +numbers[0];
+  numbers = numbers[0] == "" ? [] : numbers;
 }
 
 function calculateResult(calcNumbers, calcOperators) {
@@ -172,13 +191,32 @@ function calculateResult(calcNumbers, calcOperators) {
     operand1 = calcNumbers.pop();
     operand2 = calcNumbers.pop();
     if (operand2 == "") {
-      calcNumbers.push(operand1);
+      calcNumbers.push(+operand1);
       calcOperators.pop();
     } else {
       operatorCurrent = getCurrentOperation(calcOperators.pop());
+      if (operatorCurrent(+operand1, +operand2) == Infinity) {
+        return "Division by zero";
+      }
       calcNumbers.push(operatorCurrent(+operand1, +operand2));
     }
   }
-
   return +calcNumbers.pop().toFixed(9);
+}
+
+function equalPressed() {
+  if (numbers.length == 0) {
+    return;
+  }
+  if (numbers.length == 1) {
+    return;
+  }
+  numbers[0] = String(
+    calculateResult(numbers.slice(0).reverse(), operators.slice(0).reverse())
+  );
+  operators.length = 0;
+  current = numbers[0];
+  allInput.innerHTML = numbers[0];
+  numbers.length = 1;
+  updateResult();
 }
