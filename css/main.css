@@ -265,29 +265,30 @@ section.bottom {
 
 /****************** ADAPTIVE ********************/
 /****************** LAPTOP **********************/
-@media screen and (orientation: landscape) and (min-width: 1300px) {
+
+@media screen and (orientation: landscape) and (max-height: 2000px) {
   .main {
-    width: 20vw;
-    height: 41vw;
+    width: 41vh;
+    height: 85vh;
   }
   .top .sun-moon svg {
-    width: 1vw;
+    width: 1.2vw;
   }
   .top .result,
   .top .allinput {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
   .item {
-    height: 3.3vw;
-    width: 3.3vw;
-    font-size: 1em;
+    height: 7vh;
+    width: 7vh;
+    font-size: 1.1em;
   }
   .bottom .actions svg {
-    width: 1.3vw;
+    width: 3vh;
   }
 }
 /* ********************* IPAD **********************************/
-@media screen and (orientation: landscape) and (min-width: 1000px) {
+@media screen and (orientation: landscape) and (max-width: 1200px) {
   .main {
     width: 30vw;
     height: 62vw;
@@ -297,12 +298,19 @@ section.bottom {
   }
   .top .result,
   .top .allinput {
-    font-size: 2em;
+    font-size: 1.8em;
+  }
+  .top .result i,
+  .top .allinput i {
+    font-size: 0.8em;
   }
   .item {
     height: 5vw;
     width: 5vw;
-    font-size: 1.5em;
+    font-size: 1.7em;
+  }
+  .item i {
+    font-size: 0.8em;
   }
   .bottom .actions svg {
     width: 2vw;
@@ -321,12 +329,15 @@ section.bottom {
   }
   .top .result,
   .top .allinput {
-    font-size: 2em;
+    font-size: 1.7em;
   }
   .item {
     height: 5vh;
     width: 5vh;
-    font-size: 1.5em;
+    font-size: 1.3em;
+  }
+  .item i {
+    font-size: 1.1em;
   }
   .bottom .actions svg {
     width: 2vh;
