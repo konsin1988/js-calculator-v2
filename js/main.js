@@ -201,7 +201,7 @@ function calculateResult(calcNumbers, calcOperators) {
       calcNumbers.push(operatorCurrent(+operand1, +operand2));
     }
   }
-  return +calcNumbers.pop().toFixed(9);
+  return String(+calcNumbers.pop().toFixed(9)).slice(0, 17);
 }
 
 function equalPressed() {
